@@ -15,7 +15,7 @@ apt-get update
 apt-get install -y pbuilder gdb lua5.1 stow libconfig-model-dpkg-perl \
                    libconfig-model-itself-perl devscripts git-buildpackage \
                    svn-buildpackage help2man subversion git build-essential \
-                   gnupg reportbug libgenometools0-dev libcairo2-dev vim
+                   gnupg reportbug libgenometools0-dev libcairo2-dev vim zsh
 apt-get install -y -t unstable cme lintian
 
 # dotfiles
@@ -30,6 +30,9 @@ stow git
 stow debian
 rm -rf /home/vagrant/.ccache
 stow ccache
+
+# use zsh
+chsh -s /usr/bin/zsh vagrant
 
 # GPG keys
 ln -fs /homedir/.gnupg /home/vagrant
