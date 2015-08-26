@@ -15,7 +15,8 @@ apt-get update
 apt-get install -y pbuilder gdb lua5.1 stow libconfig-model-dpkg-perl \
                    libconfig-model-itself-perl devscripts git-buildpackage \
                    svn-buildpackage help2man subversion git build-essential \
-                   gnupg reportbug libgenometools0-dev libcairo2-dev vim zsh
+                   gnupg reportbug libgenometools0-dev libcairo2-dev vim zsh \
+                   cowbuilder cowdancer ccache
 apt-get install -y -t unstable cme lintian
 
 # dotfiles
@@ -46,3 +47,6 @@ mkdir -p /var/cache/pbuilder
 cp /homedir/uni/debian-work/pbuilder-base/sid-amd64-base.tgz /var/cache/pbuilder
 ln -sf /home/vagrant/.pbuilder* /root
 DIST=sid pbuilder --update
+
+# create base image for git-pbuilder/cowbuilder (nice to use with gbp)
+git-pbuilder create

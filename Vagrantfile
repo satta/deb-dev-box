@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # your network.
   # config.vm.network "public_network", bridge: "wlan0"
   config.vm.network "private_network", type: "dhcp"
+  config.vm.network :forwarded_port, guest: 8000, host: 8000
 
   # If true, then any SSH connect will enable agent forwarding.
   # Default value: false
@@ -23,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "/Users/satta", "/homedir", type: "nfs"
  
   config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
   
   config.vm.provision :shell, path: "bootstrap.sh"
