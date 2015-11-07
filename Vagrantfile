@@ -3,7 +3,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ffuenf/debian-8.0.0-amd64"
+  config.vm.box = "debian-jessie"
   config.vm.box_check_update = false
 
   # Create a public network, which generally matched to bridged network.
@@ -22,10 +22,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder "/Users/satta", "/homedir", type: "nfs"
- 
+
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
-  
+
   config.vm.provision :shell, path: "bootstrap.sh"
 end
