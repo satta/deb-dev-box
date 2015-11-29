@@ -13,7 +13,7 @@ apt-get install -y pbuilder gdb lua5.1 stow libconfig-model-dpkg-perl \
                    svn-buildpackage help2man subversion git build-essential \
                    gnupg reportbug libgenometools0-dev libcairo2-dev vim zsh \
                    cowbuilder cowdancer ccache valgrind texlive-full aptitude \
-                   quilt htop autopkgtest qemu-system qemu-utils debci
+                   quilt htop autopkgtest debci
 apt-get install -y -t unstable cme lintian
 
 # dotfiles
