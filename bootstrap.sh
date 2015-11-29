@@ -20,6 +20,9 @@ apt-get install -y pbuilder gdb lua5.1 stow libconfig-model-dpkg-perl \
                    quilt
 apt-get install -y -t unstable cme lintian
 
+# this is probbaly pretty specific
+apt-get install -y libgenometools0-dev libcairo2-dev texlive-full
+
 # dotfiles
 cd /home/vagrant
 git clone https://github.com/satta/dotfiles.git
