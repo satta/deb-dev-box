@@ -16,7 +16,8 @@ apt-get install -y pbuilder gdb lua5.1 stow libconfig-model-dpkg-perl \
                    libconfig-model-itself-perl devscripts git-buildpackage \
                    svn-buildpackage help2man subversion git build-essential \
                    gnupg reportbug libgenometools0-dev libcairo2-dev vim zsh \
-                   cowbuilder cowdancer ccache
+                   cowbuilder cowdancer ccache valgrind texlive-full aptitude \
+                   quilt
 apt-get install -y -t unstable cme lintian
 
 # dotfiles
@@ -25,10 +26,12 @@ git clone https://github.com/satta/dotfiles.git
 cd /home/vagrant/dotfiles
 rm -rf /home/vagrant/.pbuilder*
 stow pbuilder
+sudo ln -s /home/vagrant/.pbuilderrc /root
 rm -rf /home/vagrant/.zshrc
 stow zsh
 stow git
 stow debian
+stow ssh
 rm -rf /home/vagrant/.ccache
 stow ccache
 
@@ -39,14 +42,7 @@ chsh -s /usr/bin/zsh vagrant
 ln -fs /homedir/.gnupg /home/vagrant
 
 # SSH keys
-cp /homedir/.ssh/id_rsa* /home/vagrant/.ssh
-chown vagrant:vagrant /home/vagrant/.ssh/id_rsa*
-
-# sid base tarball for pbuilder
-mkdir -p /var/cache/pbuilder
-cp /homedir/uni/debian-work/pbuilder-base/sid-amd64-base.tgz /var/cache/pbuilder
-ln -sf /home/vagrant/.pbuilder* /root
-DIST=sid pbuilder --update
+ln -fs /homedir/.ssh /home/vagrant/.ssh/satta
 
 # create base image for git-pbuilder/cowbuilder (nice to use with gbp)
 git-pbuilder create
